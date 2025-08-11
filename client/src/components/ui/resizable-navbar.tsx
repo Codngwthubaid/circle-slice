@@ -119,7 +119,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-end space-x-2 font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
         className,
       )}
     >
@@ -127,17 +127,17 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+          className="relative px-4 py-2 text-white"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="absolute inset-0 h-full w-full rounded-full bg-neutral-800"
             />
           )}
-          <span className="relative z-20">{item.name}</span>
+          <span className="relative z-20 text-pink-400">{item.name}</span>
         </a>
       ))}
     </motion.div>
@@ -234,34 +234,40 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
-        src="https://assets.aceternity.com/logo-dark.png"
-        alt="logo"
-        width={30}
-        height={30}
-      />
-      <span className="font-medium text-black dark:text-white">Startup</span>
+      <span className="text-pink-400 text-2xl lg:text-5xl font-medium">CIRCLE&SLICE</span>
     </a>
   );
 };
 
-export const NavbarButton = ({
-  href,
-  as: Tag = "a",
-  children,
-  className,
-  variant = "primary",
-  ...props
-}: {
-  href?: string;
-  as?: React.ElementType;
+type NavbarButtonPropsBase = {
   children: React.ReactNode;
   className?: string;
   variant?: "primary" | "secondary" | "dark" | "gradient";
-} & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
+};
+
+type NavbarButtonAnchorProps = NavbarButtonPropsBase &
+  React.ComponentPropsWithoutRef<"a"> & {
+    as?: "a";
+    href: string;
+  };
+
+type NavbarButtonButtonProps = NavbarButtonPropsBase &
+  React.ComponentPropsWithoutRef<"button"> & {
+    as: "button";
+    href?: undefined;
+  };
+
+type NavbarButtonProps = NavbarButtonAnchorProps | NavbarButtonButtonProps;
+
+export const NavbarButton = (props: NavbarButtonProps) => {
+  const {
+    as = "a",
+    children,
+    className,
+    variant = "primary",
+    ...rest
+  } = props as NavbarButtonProps & { as?: string };
+
   const baseStyles =
     "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
@@ -274,13 +280,25 @@ export const NavbarButton = ({
       "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
+  if (as === "button") {
+    const {...buttonProps } = rest as React.ComponentPropsWithoutRef<"button">;
+    return (
+      <button
+        className={cn(baseStyles, variantStyles[variant], className)}
+        {...buttonProps}
+      >
+        {children}
+      </button>
+    );
+  }
+
+  // Default to anchor
   return (
-    <Tag
-      href={href || undefined}
+    <a
       className={cn(baseStyles, variantStyles[variant], className)}
-      {...props}
+      {...(rest as React.ComponentPropsWithoutRef<"a">)}
     >
       {children}
-    </Tag>
+    </a>
   );
 };
