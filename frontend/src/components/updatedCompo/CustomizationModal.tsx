@@ -84,7 +84,7 @@ export const CustomizationModal: React.FC<CustomizationModalProps> = ({
           <DialogTitle className="text-2xl font-bold text-gray-900 flex items-center justify-between">
             Customize {item.name}
             <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 text-lg px-3 py-1">
-              ₹{totalPrice}
+              £{totalPrice}
             </Badge>
           </DialogTitle>
         </DialogHeader>
@@ -104,7 +104,7 @@ export const CustomizationModal: React.FC<CustomizationModalProps> = ({
                   <p className="text-sm text-gray-600 mt-1">{item.description}</p>
                   <div className="flex items-center gap-2 mt-2">
                     <span className="text-sm text-gray-500">Base Price:</span>
-                    <Badge variant="outline">₹{item.price}</Badge>
+                    <Badge variant="outline">£{item.price}</Badge>
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export const CustomizationModal: React.FC<CustomizationModalProps> = ({
                         <div className="flex items-center gap-2">
                           {ingredient.price > 0 && (
                             <Badge variant="secondary" className="bg-green-100 text-green-800">
-                              +₹{ingredient.price}
+                              +£{ingredient.price}
                             </Badge>
                           )}
                           {ingredient.price === 0 && (
@@ -185,7 +185,7 @@ export const CustomizationModal: React.FC<CustomizationModalProps> = ({
             <CardContent className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Base Price:</span>
-                <span className="font-medium">₹{item.price}</span>
+                <span className="font-medium">£{item.price}</span>
               </div>
               {selectedIngredients.map(ingredientId => {
                 const ingredient = [...Object.values(availableIngredients).flat()]
@@ -195,13 +195,13 @@ export const CustomizationModal: React.FC<CustomizationModalProps> = ({
                 return (
                   <div key={ingredientId} className="flex justify-between items-center text-sm">
                     <span className="text-gray-600">+ {ingredient.name}:</span>
-                    <span className="text-green-600">+₹{ingredient.price}</span>
+                    <span className="text-green-600">+£{ingredient.price}</span>
                   </div>
                 );
               })}
               <div className="border-t pt-2 flex justify-between items-center font-bold text-lg">
                 <span>Total:</span>
-                <span className="text-emerald-600">₹{totalPrice}</span>
+                <span className="text-emerald-600">£{totalPrice}</span>
               </div>
             </CardContent>
           </Card>
@@ -215,7 +215,7 @@ export const CustomizationModal: React.FC<CustomizationModalProps> = ({
             onClick={handleConfirm}
             className="bg-gradient-to-r from-emerald-500 to-emerald-500 hover:from-emerald-600 hover:to-emerald-600 text-white px-8"
           >
-            Add to Cart - ₹{totalPrice}
+            Add to Cart - £{totalPrice}
           </Button>
         </DialogFooter>
       </DialogContent>

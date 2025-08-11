@@ -20,7 +20,7 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   const words = children.split(" ");
 
   return (
-    <div ref={targetRef} className={cn("relative z-0 h-[50vh]", className)}>
+    <div ref={targetRef} className={cn("relative z-0 h-[20vh]", className)}>
       <div
         className={
           "max-w-4xl items-center bg-transparent"
@@ -54,7 +54,7 @@ interface WordProps {
 }
 
 const Word: FC<WordProps> = ({ children, progress, range }) => {
-  const opacity = useTransform(progress, range, [0, 1]);
+  const opacity = useTransform(progress, range, [1, 1]);
   return (
     <span className="xl:lg-3 relative mx-1 lg:mx-1.5">
       <span className="absolute opacity-30">{children}</span>

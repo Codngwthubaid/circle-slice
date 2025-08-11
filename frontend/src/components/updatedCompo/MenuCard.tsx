@@ -41,7 +41,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({
                         {item.name}
                     </CardTitle>
                     <Badge variant="secondary" className="bg-pink-100 text-pink-800 font-semibold">
-                        ₹{item.price}
+                        £{item.price}
                     </Badge>
                 </div>
                 <CardDescription className="text-white leading-relaxed">

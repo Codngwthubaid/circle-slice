@@ -27,6 +27,27 @@ export default function App() {
     }),
   };
 
+  const sections = [
+    {
+      title: "Only the Real Stuff",
+      titleColor: "text-emerald-400",
+      description:
+        "Fresh, honest ingredients, just as they were meant to be—no gimmicks, only goodness.",
+    },
+    {
+      title: "Vibes That Taste as Good as They Feel",
+      titleColor: "text-pink-400",
+      description:
+        "Where every dish resonates with the warmth, authenticity, and joy of a genuine shared moment.",
+    },
+    {
+      title: "Sustainability That Feels Right",
+      titleColor: "text-orange-400",
+      description:
+        "Thoughtful sourcing, purposeful growing, and eco-conscious choices—because real care goes beyond the plate.",
+    },
+  ];
+
   return (
     <main>
       <div className="fixed inset-0 -z-10">
@@ -89,19 +110,24 @@ export default function App() {
             displayOverlayContent={true}
           />
           <div>
-            <TextAnimate animation="blurInUp" by="character" once className='text-5xl font-bold text-emerald-400'>
-              CIRCLE & SLICE
-            </TextAnimate>
-            <TextReveal className="font-normal">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos quo nihil itaque similique ad dignissimos
-              quisquam asperiores laudantium deleniti laborum, a magnam placeat. Dolore, reiciendis sint iste earum
-              voluptatem repellendus! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            </TextReveal>
+            {sections.map((section, index) => (
+              <div key={index}>
+                <TextAnimate
+                  animation="blurInUp"
+                  by="character"
+                  once
+                  className={`text-4xl font-bold ${section.titleColor}`}
+                >
+                  {section.title}
+                </TextAnimate>
+                <TextReveal className="font-normal">{section.description}</TextReveal>
+              </div>
+            ))}
           </div>
         </div>
 
         <div id='menu'>
-          <TextAnimate animation="blurInUp" by="character" once className='mt-20 text-5xl font-bold text-emerald-400 mx-20'>
+          <TextAnimate animation="blurInUp" by="character" once className='mt-20 text-4xl font-bold text-emerald-400 mx-20'>
             OUR MENU
           </TextAnimate>
         </div>
@@ -111,7 +137,7 @@ export default function App() {
         </div>
 
         <div id="gallery">
-          <TextAnimate animation="blurInUp" by="character" once className='mt-20 text-5xl font-bold text-emerald-400 mx-5 lg:mx-15'>
+          <TextAnimate animation="blurInUp" by="character" once className='mt-20 text-4xl font-bold text-emerald-400 mx-5 lg:mx-15'>
             OUR GALLERY
           </TextAnimate>
         </div>

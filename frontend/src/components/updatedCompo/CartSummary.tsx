@@ -1,5 +1,5 @@
-import React from 'react';
-import { ShoppingBag, X, ChefHat } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShoppingBag, X, ChefHat, Loader2 } from 'lucide-react'; // ✅ Added Loader2 icon
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -10,7 +10,7 @@ interface CartSummaryProps {
   cartItems: CartItem[];
   onRemoveItem: (id: string) => void;
   onUpdateQuantity: (id: string, quantity: number) => void;
-  onCheckout: () => void;
+  onCheckout: () => Promise<void> | void; // can handle async
 }
 
 const getIngredientById = (id: string) => {
@@ -23,8 +23,19 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
   onUpdateQuantity,
   onCheckout
 }) => {
+  const [isLoading, setIsLoading] = useState(false); // ✅ Loading state
+
   const total = cartItems.reduce((sum, item) => sum + ((item.customizedPrice || item.price) * item.quantity), 0);
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleCheckoutClick = async () => {
+    setIsLoading(true);
+    try {
+      await onCheckout();
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -70,7 +81,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
                   </h4>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-sm text-gray-600">
-                      ₹{item.customizedPrice || item.price}
+                      £{item.customizedPrice || item.price}
                     </span>
                     <span className="text-xs text-gray-500">× {item.quantity}</span>
                   </div>
@@ -108,7 +119,6 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
                 </div>
               </div>
 
-              {/* Show customized ingredients */}
               {item.customizedIngredients && item.customizedIngredients.length > 0 && (
                 <div className="mt-2 pt-2 border-t border-gray-200">
                   <h5 className="text-xs font-medium text-gray-700 mb-1">Added Ingredients:</h5>
@@ -121,7 +131,7 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
                         <div key={ingredientId} className="flex justify-between items-center text-xs">
                           <span className="text-gray-600">• {ingredient.name}</span>
                           <span className="text-green-600 font-medium">
-                            {ingredient.price > 0 ? `+₹${ingredient.price}` : 'Free'}
+                            {ingredient.price > 0 ? `+£${ingredient.price}` : 'Free'}
                           </span>
                         </div>
                       );
@@ -136,15 +146,22 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
         <div className="border-t pt-4">
           <div className="flex justify-between items-center mb-4">
             <span className="text-lg font-semibold text-emerald-400">Total:</span>
-            <span className="text-2xl font-bold text-pink-600">₹{total}</span>
+            <span className="text-2xl font-bold text-pink-600">£{total}</span>
           </div>
 
           <Button
-            onClick={onCheckout}
-            className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={handleCheckoutClick}
+            disabled={isLoading}
+            className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
             size="lg"
           >
-            Place Order - ₹{total}
+            {isLoading ? (
+              <>
+                <Loader2 className="h-5 w-5 animate-spin" /> Processing...
+              </>
+            ) : (
+              <>Place Order - £{total}</>
+            )}
           </Button>
         </div>
       </CardContent>

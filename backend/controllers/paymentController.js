@@ -20,7 +20,7 @@ const createCheckoutSession = async (req, res) => {
       mode: "payment",
       line_items: cartItems.map((item) => ({
         price_data: {
-          currency: "inr",
+          currency: "gbp",
           product_data: {
             name: item.name,
             description: item.customizedIngredients
