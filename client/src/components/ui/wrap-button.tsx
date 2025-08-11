@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { ArrowRight, Globe } from "lucide-react"
-
 import { cn } from "@/lib/utils"
 
 interface WrapButtonProps {
@@ -21,18 +20,18 @@ const WrapButton: React.FC<WrapButtonProps> = ({
         <Link to={href}>
           <div
             className={cn(
-              "group cursor-pointer border group border-[#3B3A3A] bg-[#151515] gap-2  h-[64px] flex items-center p-[11px] rounded-full",
+              "group cursor-pointer border group border-orange-500 bg-orange-500 gap-2  h-[64px] flex items-center p-[11px] rounded-full",
               className
             )}
           >
-            <div className="border border-[#3B3A3A] bg-[#ff3f17]  h-[43px] rounded-full flex items-center justify-center text-white">
+            <div className="border border-orange-500 bg-orange-500  h-[43px] rounded-full flex items-center justify-center text-white">
               <p className="font-medium tracking-tight mr-3 ml-2 flex items-center gap-2 justify-center ">
                 {children}
               </p>
             </div>
-            <div className="text-[#3b3a3a] group-hover:ml-2  ease-in-out transition-all size-[26px] flex items-center justify-center rounded-full border-2 border-[#3b3a3a]  ">
+            <div className="text-pink-200 group-hover:ml-2  ease-in-out transition-all size-[26px] flex items-center justify-center rounded-full border-2 border-orange-500  ">
               <ArrowRight
-                size={18}
+                size={60}
                 className="group-hover:rotate-45 ease-in-out transition-all "
               />
             </div>
@@ -41,17 +40,17 @@ const WrapButton: React.FC<WrapButtonProps> = ({
       ) : (
         <div
           className={cn(
-            "group cursor-pointer border group border-[#3B3A3A] bg-[#151515] gap-2  h-[64px] flex items-center p-[11px] rounded-full",
+            "group cursor-pointer border group border-orange-500 bg-orange-500 gap-2  h-[64px] flex items-center p-[11px] rounded-full",
             className
           )}
         >
-          <div className="border border-[#3B3A3A] bg-[#fe7500]  h-[43px] rounded-full flex items-center justify-center text-white">
+          <div className="border border-orange-500 bg-orange-500  h-[43px] rounded-full flex items-center justify-center text-white">
             <Globe className="mx-2 animate-spin " />
             <p className="font-medium tracking-tight mr-3">
               {children ? children : "Get Started"}
             </p>
           </div>
-          <div className="text-[#3b3a3a] group-hover:ml-2  ease-in-out transition-all size-[26px] flex items-center justify-center rounded-full border-2 border-[#3b3a3a]  ">
+          <div className="text-[#3b3a3a] group-hover:ml-2  ease-in-out transition-all size-[26px] flex items-center justify-center rounded-full border-2 border-orange-500  ">
             <ArrowRight
               size={18}
               className="group-hover:rotate-45 ease-in-out transition-all "

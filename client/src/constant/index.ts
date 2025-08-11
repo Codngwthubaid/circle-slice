@@ -45,7 +45,7 @@ export const commonIngredients: Record<string, Ingredient> = {
   'marinara-sauce': { id: 'marinara-sauce', name: 'Marinara Sauce', price: 20, isDefault: false, category: 'sauce' },
 
   // Cheeses
-  'mozzarella': { id: 'mozzarella', name: 'Mozzarella', price: 50, isDefault: true, category: 'cheese' },
+  'mozzarella': { id: 'mozzarella', name: 'Mozzarella', price: 99, isDefault: true, category: 'cheese' },
   'parmesan': { id: 'parmesan', name: 'Parmesan', price: 40, isDefault: false, category: 'cheese' },
   'gorgonzola': { id: 'gorgonzola', name: 'Gorgonzola', price: 60, isDefault: false, category: 'cheese' },
   'ricotta': { id: 'ricotta', name: 'Ricotta', price: 45, isDefault: false, category: 'cheese' },
@@ -77,13 +77,14 @@ export const commonIngredients: Record<string, Ingredient> = {
   'olive-oil': { id: 'olive-oil', name: 'Extra Virgin Olive Oil', price: 15, isDefault: false, category: 'spice' },
 };
 
+
 export const menuItems: MenuItem[] = [
   // Pizza Items
   {
     id: 'pizza-1',
     name: 'Margherita Supreme',
     description: 'Classic Italian pizza with fresh basil, tomatoes, and premium mozzarella cheese',
-    price: 299, // Base price
+    price: 8.99,
     ingredients: [
       commonIngredients['pizza-dough'],
       commonIngredients['tomato-sauce'],
@@ -99,7 +100,7 @@ export const menuItems: MenuItem[] = [
     id: 'pizza-2',
     name: 'Pepperoni Deluxe',
     description: 'Loaded with premium pepperoni, melted cheese, and our signature tomato sauce',
-    price: 399,
+    price: 8.99,
     ingredients: [
       commonIngredients['pizza-dough'],
       commonIngredients['tomato-sauce'],
@@ -115,7 +116,7 @@ export const menuItems: MenuItem[] = [
     id: 'pizza-3',
     name: 'Quattro Formaggi',
     description: 'Four cheese blend with mozzarella, gorgonzola, parmesan, and ricotta',
-    price: 449,
+    price: 8.99,
     ingredients: [
       commonIngredients['pizza-dough'],
       commonIngredients['white-sauce'],
@@ -131,7 +132,7 @@ export const menuItems: MenuItem[] = [
     id: 'pizza-4',
     name: 'BBQ Chicken Ranch',
     description: 'Grilled chicken with BBQ sauce, red onions, cilantro, and ranch drizzle',
-    price: 499,
+    price: 8.99,
     ingredients: [
       commonIngredients['pizza-dough'],
       commonIngredients['bbq-sauce'],
@@ -150,7 +151,7 @@ export const menuItems: MenuItem[] = [
     id: 'pasta-1',
     name: 'Spaghetti Carbonara',
     description: 'Creamy pasta with pancetta, eggs, parmesan, and black pepper',
-    price: 299,
+    price: 8.99,
     ingredients: [
       commonIngredients['pasta-base'],
       commonIngredients['pancetta'],
@@ -165,7 +166,7 @@ export const menuItems: MenuItem[] = [
     id: 'pasta-2',
     name: 'Fettuccine Alfredo',
     description: 'Rich and creamy fettuccine pasta in our signature alfredo sauce',
-    price: 329,
+    price: 8.99,
     ingredients: [
       commonIngredients['pasta-base'],
       commonIngredients['alfredo-sauce'],
@@ -179,7 +180,7 @@ export const menuItems: MenuItem[] = [
     id: 'pasta-3',
     name: 'Penne Arrabbiata',
     description: 'Spicy tomato sauce with garlic, red chilies, and fresh herbs',
-    price: 269,
+    price: 8.99,
     ingredients: [
       commonIngredients['pasta-base'],
       commonIngredients['tomato-sauce'],
@@ -195,7 +196,7 @@ export const menuItems: MenuItem[] = [
     id: 'pasta-4',
     name: 'Lasagna Bolognese',
     description: 'Layered pasta with rich meat sauce, bechamel, and three cheese blend',
-    price: 499,
+    price: 8.99,
     ingredients: [
       commonIngredients['pasta-base'],
       commonIngredients['ground-beef'],
@@ -213,7 +214,7 @@ export const menuItems: MenuItem[] = [
     id: 'appetizer-1',
     name: 'Garlic Bread Supreme',
     description: 'Crispy garlic bread topped with herbs, cheese, and a side of marinara',
-    price: 149,
+    price: 6.99,
     ingredients: [
       commonIngredients['bread-base'],
       commonIngredients['garlic'],
@@ -228,7 +229,7 @@ export const menuItems: MenuItem[] = [
     id: 'appetizer-2',
     name: 'Mozzarella Sticks',
     description: 'Golden fried mozzarella sticks served with marinara dipping sauce',
-    price: 199,
+    price: 6.99,
     ingredients: [
       commonIngredients['mozzarella'],
       commonIngredients['italian-herbs'],
@@ -241,7 +242,7 @@ export const menuItems: MenuItem[] = [
     id: 'appetizer-3',
     name: 'Caesar Salad',
     description: 'Fresh romaine lettuce with caesar dressing, croutons, and parmesan',
-    price: 229,
+    price: 6.99,
     ingredients: [
       commonIngredients['parmesan'],
       commonIngredients['garlic']
@@ -253,7 +254,7 @@ export const menuItems: MenuItem[] = [
     id: 'appetizer-4',
     name: 'Bruschetta Trio',
     description: 'Three varieties of bruschetta with tomato-basil, olive tapenade, and ricotta',
-    price: 299,
+    price: 6.99,
     ingredients: [
       commonIngredients['bread-base'],
       commonIngredients['tomatoes'],
@@ -270,7 +271,7 @@ export const menuItems: MenuItem[] = [
     id: 'dessert-1',
     name: 'Tiramisu Classic',
     description: 'Traditional Italian dessert with coffee-soaked ladyfingers and mascarpone',
-    price: 249,
+    price: 6.99,
     ingredients: [],
     category: 'desserts',
     image: 'https://images.pexels.com/photos/6880219/pexels-photo-6880219.jpeg?auto=compress&cs=tinysrgb&w=500'
@@ -279,7 +280,7 @@ export const menuItems: MenuItem[] = [
     id: 'dessert-2',
     name: 'Chocolate Lava Cake',
     description: 'Warm chocolate cake with molten center, served with vanilla ice cream',
-    price: 199,
+    price: 6.99,
     ingredients: [],
     category: 'desserts',
     image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=500'
@@ -288,7 +289,7 @@ export const menuItems: MenuItem[] = [
     id: 'dessert-3',
     name: 'Panna Cotta Berry',
     description: 'Silky smooth vanilla panna cotta topped with fresh berry compote',
-    price: 179,
+    price: 6.99,
     ingredients: [],
     category: 'desserts',
     image: 'https://images.pexels.com/photos/2067419/pexels-photo-2067419.jpeg?auto=compress&cs=tinysrgb&w=500'
@@ -297,12 +298,13 @@ export const menuItems: MenuItem[] = [
     id: 'dessert-4',
     name: 'Gelato Selection',
     description: 'Choice of three scoops from our artisanal gelato collection',
-    price: 149,
+    price: 6.99,
     ingredients: [],
     category: 'desserts',
     image: 'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg?auto=compress&cs=tinysrgb&w=500'
   }
 ];
+
 
 // Available ingredients for customization by category
 export const availableIngredients: Record<string, Ingredient[]> = {
