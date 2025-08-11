@@ -1,5 +1,5 @@
 /*
-	Installed from https://reactbits.dev/ts/tailwind/
+  Installed from https://reactbits.dev/ts/tailwind/
 */
 
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
@@ -476,43 +476,35 @@ class App {
     const defaultItems = [
       {
         image: './cas-01.jpg',
-        text: "Bridge",
+        text: "Pizza",
       },
       {
-        image:'./cas-02.jpg',
-        text: "Strawberries",
+        image: './cas-02.jpg',
+        text: "Pepperoni Pizza",
       },
       {
-        image:'./cas-03.jpg',
-        text: "Deep Diving",
+        image: './cas-03.jpg',
+        text: "Quattro Formaggi",
       },
       {
         image: './cas-04.jpg',
-        text: "Train Track",
+        text: "Pasta",
       },
       {
-        image: './cas-05.jpg',
-        text: "Santorini",
+        image: './cas-06.jpg',
+        text: "Deep Fried Pizza",
       },
       {
-        image:'./cas-06.jpg',
-        text: "Blurry Lights",
-      },
-      {
-        image:'./cas-07.jpg',
-        text: "New York",
+        image: './cas-07.jpg',
+        text: "Desserts",
       },
       {
         image: './cas-08.jpg',
-        text: "Good Boy",
-      },
-      {
-        image: './cas-09.jpg',
-        text: "Coastline",
+        text: "Bakery",
       },
       {
         image: './cas-10.jpg',
-        text: "Palm Trees",
+        text: "Tomato Spaghetti",
       },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
