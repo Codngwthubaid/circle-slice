@@ -21,8 +21,8 @@ export default function App() {
       y: 0,
       filter: 'blur(0px)',
       transition: {
-        delay: index * 0.1,
-        duration: 0.5,
+        delay: index * 0.03,
+        duration: 0.3,
       },
     }),
   };
@@ -63,7 +63,7 @@ export default function App() {
             {"TODAY I'M FEELING...".split('').map((char, index) => (
               <motion.span
                 key={index}
-                className="font-bold text-4xl lg:text-8xl  text-white"
+                className="font-bold text-4xl lg:text-8xl text-white"
                 variants={charVariants}
                 initial="hidden"
                 animate="visible"
