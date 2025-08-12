@@ -1,18 +1,18 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const paymentRoutes = require("./routes/paymentRoutes");
+import express from "express";
+import cors from "cors";
+import { config } from "dotenv";
+import paymentRoutes from "./routes/paymentRoutes";
 
-dotenv.config();
+config();
 
 const app = express();
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: process.env.FRONTEND_URL || "https://circle-slice.vercel.app",
     credentials: true,
   })
 );
-app.use(express.json());
+app.use(json());
 
 // Routes
 app.use("/api/payment", paymentRoutes);

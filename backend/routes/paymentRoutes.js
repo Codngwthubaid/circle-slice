@@ -1,7 +1,7 @@
-const express = require("express");
-const { createCheckoutSession } = require("../controllers/paymentController");
+import Router from "express"
+import { createCheckoutSession } from "../controllers/paymentController";
 
-const router = express.Router();
+const router = Router();
 
 router.post("/create-checkout-session", createCheckoutSession);
 

@@ -1,7 +1,7 @@
-const dotenv = require("dotenv")
-dotenv.config()
+import dotenv from "dotenv"
+import Stripe from "stripe";
 
-const Stripe = require("stripe");
+dotenv.config()
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2023-10-16", // use stable version
@@ -34,9 +34,9 @@ const createCheckoutSession = async (req, res) => {
         quantity: item.quantity,
       })),
       success_url:
-        (process.env.FRONTEND_URL || "http://localhost:3000") + "/success",
+        (process.env.FRONTEND_URL || "https://circle-slice.vercel.app") + "/success",
       cancel_url:
-        (process.env.FRONTEND_URL || "http://localhost:3000") + "/cancel",
+        (process.env.FRONTEND_URL || "https://circle-slice.vercel.app") + "/cancel",
     });
 
     res.json({ id: session.id });
