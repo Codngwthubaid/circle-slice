@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { config } from "dotenv";
-import paymentRoutes from "./routes/paymentRoutes";
+import paymentRoutes from "./routes/payment.route.js";
 
 config();
 
@@ -12,7 +12,6 @@ app.use(
     credentials: true,
   })
 );
-app.use(json());
 
 // Routes
 app.use("/api/payment", paymentRoutes);

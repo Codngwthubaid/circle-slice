@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2023-10-16", // use stable version
 });
 
-const createCheckoutSession = async (req, res) => {
+export const createCheckoutSession = async (req, res) => {
   try {
     const { cartItems } = req.body;
 
@@ -45,5 +45,3 @@ const createCheckoutSession = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
-module.exports = { createCheckoutSession };
