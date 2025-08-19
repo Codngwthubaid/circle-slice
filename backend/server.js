@@ -9,7 +9,8 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "https://circle-slice.vercel.app",
+    // origin: process.env.FRONTEND_URL || "https://circle-slice.vercel.app",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
